@@ -673,30 +673,30 @@ def automode3(ID, m):   #for floorboss
 
     else:
         return "You don't have a character yet"
-
 def bossatt(ID):
-    monst_dmg = db.select("character", "curhp", ID) - db.select("boss", "dmg1", ID)
-    db.update("character", "curhp", ID, monst_dmg)
-    if db.select("character", "curhp", ID) <= 0:
-        db.update("character", "curhp", ID, 0)
-        dmg1 = db.select("boss", "dmg1", ID)
-        bossname = db.select("boss", "name", ID)
-        db.del_boss(ID)
-        return f"{bossname} attacked back. You have lost {dmg1}hp and died."
-    else:
-        return f"{db.select('boss', 'name', ID)} attacked back. You have lost {db.select('boss', 'dmg1', ID)}hp."
+    if db.select("boss", "mode", ID)==1:
+        monst_dmg = db.select("character", "curhp", ID) - db.select("boss", "dmg1", ID)
+        db.update("character", "curhp", ID, monst_dmg)
+        if db.select("character", "curhp", ID) <= 0:
+            db.update("character", "curhp", ID, 0)
+            dmg1 = db.select("boss", "dmg1", ID)
+            bossname = db.select("boss", "name", ID)
+            db.del_boss(ID)
+            return f"{bossname} attacked back. You have lost {dmg1}hp and died."
+        else:
+            return f"{db.select('boss', 'name', ID)} attacked back. You have lost {db.select('boss', 'dmg1', ID)}hp."
 
-def bossattmad(ID):
-    monst_dmg = db.select("character", "curhp", ID) - db.select("boss", "dmg2", ID)
-    db.update("character", "curhp", ID, monst_dmg)
-    if db.select("character", "curhp", ID) <= 0:
-        db.update("character", "curhp", ID, 0)
-        dmg2 = db.select("boss", "dmg2", ID)
-        bossname = db.select("boss", "name", ID)
-        db.del_boss(ID)
-        return f"{bossname} attacked back. You have lost {dmg2}hp and died."
-    else:
-        return f"{db.select('boss', 'name', ID)} attacked back. You have lost {db.select('boss', 'dmg2', ID)}hp."
+    elif db.select("boss", "mode", ID) == 2:
+        monst_dmg = db.select("character", "curhp", ID) - db.select("boss", "dmg2", ID)
+        db.update("character", "curhp", ID, monst_dmg)
+        if db.select("character", "curhp", ID) <= 0:
+            db.update("character", "curhp", ID, 0)
+            dmg2 = db.select("boss", "dmg2", ID)
+            bossname = db.select("boss", "name", ID)
+            db.del_boss(ID)
+            return f"{bossname} attacked back. You have lost {dmg2}hp and died."
+        else:
+            return f"{db.select('boss', 'name', ID)} attacked back. You have lost {db.select('boss', 'dmg2', ID)}hp."
 
 def dropboss(ID):
     with open("Drop.json", "r") as f:
