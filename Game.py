@@ -77,15 +77,19 @@ def randomskill(ID, m):
     else:
         return "You didn't create a character yet."
 
-def skillafif(ID, m):
+def skillafif(ID, m): #for testing purposes
     if existing_char(ID) != None:
         if m.lower() == "passive":
             a = "Sin of Gluttony[Mythic]"
             db.update("character", "wornpasskill", ID, a)
+            a = list(a)
+            db.update_list("character", "passskills", ID, a)
             return f"You are the finest being and thus deserve this divine skill {a}"
         elif m.lower() == "active":
             b = "Divine Punishment[Mythic]"
             db.update("character", "wornactskill", ID, b)
+            b = list(b)
+            db.update_list("character", "passskills", ID, b)
             return f"You are the finest being and thus deserve this divine skill {b}"
     else:
         return "You didn't create a character yet."
