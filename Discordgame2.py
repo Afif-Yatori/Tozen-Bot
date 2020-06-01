@@ -134,7 +134,7 @@ async def titles(ctx):
         await ctx.send(current_titles)
         await ctx.send("Would you like to change the current equipped title? Please answer with yes or no")
         def check(m):
-            return m.author == author and m.message.id == channelid
+            return m.author == author and m.channel.id == channelid
 
         msg = await client.wait_for('message', check=check)
         if msg.content == "yes":
@@ -291,4 +291,4 @@ async def floorboss(ctx):
 
 
 
-client.run("your bot token")
+client.run("NzAxMzkyNTU2MDgwMTAzNDc0.XtSnDw.6m0rYdY-WNNNqR_EhXErCXaVm_k")

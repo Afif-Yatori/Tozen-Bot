@@ -5,7 +5,7 @@ c = con.cursor()
 
 
 def new_player(ID, name, gender):
-    c.execute("INSERT INTO character(level, playerid, race, experience, name, gender, hp, curhp, ad, ap, spd, atspd, mana, curmana, boss, curfloor, highestfloor, statpoints, gold, titleequipped, inventory, titleavailable, actskills, passskills, experiencereq) VALUES('1',:ID,'Human',1000,:name,:gender,100,100, 25,25,100,1,100,100,'Orc Chef',1,1,5, 0, 'Beginner', '', 'None', '', '', 1000)", {"ID": ID, "name": name, "gender": gender})
+    c.execute("INSERT INTO character(level, playerid, race, experience, name, gender, hp, curhp, ad, ap, spd, atspd, mana, curmana, boss, curfloor, highestfloor, statpoints, gold, titleequipped, inventory, titleavailable, actskills, passskills, experiencereq, curfloorname) VALUES('1',:ID,'Human',1000,:name,:gender,100,100, 25,25,100,1,100,100,'Orc Chef',1,1,5, 0, 'Beginner', '', 'None', '', '', 1000, 'The Amethyst Forest')", {"ID": ID, "name": name, "gender": gender})
     con.commit()
 
 def exists(ID):
