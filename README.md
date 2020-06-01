@@ -1,5 +1,5 @@
 # Tozen-Bot
-These files represent my discord bot aka Tozen which was made for my semester 2 project in IMC FH Krems
+These files represent my discord bot aka Tozen which was made for my semester 2 project in college.
 The sqlgame file is the file with all sql related commands.
 The game file is the file with all game related commands , as in a game that could work without discord if needed (gotta tweak some things but yeah)
 The discordgame2 file is the file with all related commands to discord, it's this file that you are supposed to run to make the bot work.
