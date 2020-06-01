@@ -269,12 +269,12 @@ async def floorboss(ctx):
                 await ctx.send(Game.automode3(ID, msg.content))
                 while Game.hp2(ID) == None:
                     if Game.enoughmana(ID) != None:
-                        await ctx.send(Game.bossattmad(ID))
+                        await ctx.send(Game.bossatt(ID))
                         await ctx.send("Would you like to attack with your sword, use a skill or quit?Quitting means losing all your hp. Please answer with either Sword,Skill or Quit. Answering something else will be considered quitting!")
                         msg = await client.wait_for('message', check=check)
                         await ctx.send(Game.automode3(ID, msg.content))
                     else:
-                        await ctx.send(Game.bossattmad(ID))
+                        await ctx.send(Game.bossatt(ID))
                         await ctx.send("You do not have enough mana to use a skill. Would you like to attack with your sword or quit? Please answer with either Sword or Quit. Answering something else will be considered quitting!")
                         msg = await client.wait_for('message', check=check)
                         await ctx.send(Game.automode3(ID, msg.content))
