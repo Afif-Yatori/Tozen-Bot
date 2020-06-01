@@ -291,4 +291,4 @@ async def floorboss(ctx):
 
 
 
-client.run("NzAxMzkyNTU2MDgwMTAzNDc0.XtSnDw.6m0rYdY-WNNNqR_EhXErCXaVm_k")
+client.run("your bot token")
