@@ -1,7 +1,6 @@
 
 import sqlgame as db
 import random
-import sqlite3
 import math
 import json
 
@@ -364,8 +363,9 @@ def Yatori(ID):
     h = existing_char(ID)
     if h != None:
         if ID == 257115950623490049:
-            if "God of Creation" not in db.select_list("character", "titleavailable", ID) or "God of Creation" != db.select("character", "titlequipped", ID):
-                add_title = db.select_list("character", "titleavailable", ID).append("God of Creation")
+            if "God of Creation" not in db.select_list("character", "titleavailable", ID) and "God of Creation" != db.select("character", "titleequipped", ID):
+                add_title = db.select_list("character", "titleavailable", ID)
+                add_title.append("God of Creation")
                 db.update_list("character", "titleavailable", ID, add_title)
                 db.update("character", "race", ID, "God")
                 return "You have gotten your lost strength back"
@@ -391,12 +391,17 @@ def current_titles_available(ID):
 
 def weartitle(ID, m):
     if m in db.select_list("character", "titleavailable", ID):
-        cur_title = db.select_list("character", "titleequipped", ID)
-        db.update_list("character", "titleavailable", ID, cur_title)
+        cur_title = db.select("character", "titleequipped", ID)
+        available = db.select_list("character", "titleavailable", ID)
+        available.append(cur_title)
+        available.remove(m)
+        db.update_list("character", "titleavailable", ID, available)
         db.update("character", "titleequipped", ID, m)
-        b = db.select_list("character", "titleavailable", ID)
-        b.remove(db.select("character", "titleequipped", ID))
-        db.update_list("character", "titleavailable", ID, b)
+        #db.update_list("character", "titleavailable", ID, cur_title)
+        #db.update("character", "titleequipped", ID, m)
+        #b = db.select_list("character", "titleavailable", ID)
+        #b.remove(db.select("character", "titleequipped", ID))
+        #db.update_list("character", "titleavailable", ID, b)
         return f"The title {db.select('character', 'titleequipped', ID)} has been equipped"
     else:
         return f"This is not an available title."
