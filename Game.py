@@ -627,7 +627,7 @@ def automode3(ID, m):   #for floorboss
                             return f"You have dealt {(db.select('character', 'ad', ID)+db.select('character', 'ap', ID))} dmg with your sword. {db.select('boss', 'name', ID)} has {db.select('boss', 'hp2', ID)}hp left."
                     elif m.lower() == "skill":
                         new_hp2 = db.select("boss", "hp2", ID) - useskill(ID)
-                        db.update("boss", "hp1", ID, new_hp2)
+                        db.update("boss", "hp2", ID, new_hp2)
                         new_curmana = db.select("character", "curmana", ID) - actskillmana(ID)
                         db.update("character", "curmana", ID, new_curmana)
                         if db.select("boss", "hp2", ID) <= 0:
